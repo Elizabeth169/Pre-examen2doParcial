@@ -1,0 +1,19 @@
+@startuml
+start
+:Iniciar Sesión;
+:Validar credenciales;
+
+if (¿Credenciales validas?) then(SI)
+    :Mostrar catálogo de producto;
+    :Seleccionar productos;
+    :Indicar cantidad;
+
+if(¿Usuario y producto existen?) then(SI)
+    :Registrar pedido con fecha actual del sistema;
+    :Devolver   ID de confirmació;
+else(NO)
+    :Rechazar pedido;
+endif
+else (NO)
+    :Mostrar error de acceso;
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+
+entity "USERS" as USERS{
+    PK id    BIGINT / SERIAL
+
+    *name: VARCHAR(100)
+    *email: VARCHAR(120) UNIQUE
+}
+
+
+
+entity "PRODUCTS" as products{
+    PK id  BIGINT/SERIAL
+   
+    *name: VARCHAR(150)
+    *price: DECIMAL(10,2)
+}
+
+entity "ORDERS" as orders{
+    PK id BIGINT/SERIAL
+    FK user_id BIGINT(NOT NULL)
+    FK product_id BIGINT(NOT NULL)
+        quantity INT(CHECK> 0)
+        order_date TIMESTAMP
+}
+         USERS ||--o{ orders : genera (1:N)
+        products ||--o{ orders : contiene (1:N)
+
+@enduml
